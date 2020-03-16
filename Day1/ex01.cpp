@@ -95,7 +95,7 @@ int main() {
 	scanf_s("%d %d", &su1, &su2);
 	sum = su1 + su2;
 	printf("두 정수의 합은 %d입니다.\n", sum);
-	*/
+
 	int age;
 
 	// 이름 배열의 길이는 적절히 계산
@@ -106,5 +106,18 @@ int main() {
 	printf("%s님의 나이는 몇 살입니까? ", name);
 	scanf_s("%d", &age);
 	printf("%s님의 나이는 %d살입니다.\n", name, age);
-	
+	*/
+
+	// Input: a, b	Output: >, <, ==  삼항식 활용.
+	int a, b;
+	char res;
+	printf("Enter two numbers...");
+	scanf_s("%d%d", &a, &b);
+	if (a == b)
+	{
+		res = '=';
+	}
+	else 
+		a > b ? res = '>' : res = '<';
+	printf(res == '=' ? "%c%c": "%c", res, res);
 }
