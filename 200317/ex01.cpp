@@ -1,4 +1,4 @@
-#include <cstdio>
+﻿#include <cstdio>
 // 주석
 
 /*
@@ -6,17 +6,16 @@
 */
 int global_variable;
 
-/*
 int main() {
 	/*
 	printf("이름 : 홍길동\n");
 	printf("나이 : 16\n");
 	printf("주소 : 산골짜기\n");
-	
+
 	printf("\t<(^. .^)>\n");
 	printf("\t(\"(00)\")\n\n");
 	printf("\t배고프다 애용~");
-	
+
 	printf("%d + %d = %d\n", 5, 12, 5 + 12);
 	printf("%d + %d = \n", 5, 12, 5 + 12);
 	printf("%d + %d = %d\n", 5, 12);
@@ -92,7 +91,7 @@ int main() {
 
 	printf("정수 두 개를 입력하세요.");
 
-	// 입력받는 함수는 얌전히 입력만 받아라. 
+	// 입력받는 함수는 얌전히 입력만 받아라.
 	scanf_s("%d %d", &su1, &su2);
 	sum = su1 + su2;
 	printf("두 정수의 합은 %d입니다.\n", sum);
@@ -101,13 +100,13 @@ int main() {
 
 	// 이름 배열의 길이는 적절히 계산
 	char name[20];
-	
+
 	printf("당신의 이름은 무엇입니까? ");
 	scanf_s("%s", name, sizeof(name));
 	printf("%s님의 나이는 몇 살입니까? ", name);
 	scanf_s("%d", &age);
 	printf("%s님의 나이는 %d살입니다.\n", name, age);
-	#1#
+	*/
 
 	// Input: a, b	Output: >, <, ==  삼항식 활용.
 	// 삼항식은 프로그램 성능을 약간 향상시키지만, 너의 머리는 완전히 돌아버리게 만든다.
@@ -120,8 +119,7 @@ int main() {
 	{
 		res = '=';
 	}
-	else 
+	else
 		a > b ? res = '>' : res = '<';
 	printf(res == '=' ? "%c%c": "%c", res, res);
 }
-*/
