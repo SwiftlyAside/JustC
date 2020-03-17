@@ -138,13 +138,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="..\Day1\.editorconfig" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="ex01.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="ex02.cpp" />
+    <ClCompile Include="Quiz.cpp" />
     <ClCompile Include="Ex03.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
