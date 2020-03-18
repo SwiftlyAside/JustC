@@ -386,7 +386,7 @@ int main(int argc, char* argv[]) {
 		printf("2. 약풍\n");
 		printf("3. 강풍\n");
 		printf("4. 정지\n");
-		printf("9. 프로그램 종료\n");
+		printf("?. 프로그램 종료\n");
 		printf("========================\n");
 		scanf_s("%d", &num);
 		switch (num) {
@@ -410,38 +410,10 @@ int main(int argc, char* argv[]) {
 			printf("선풍기를 껐습니다!");
 			_getch();
 			break;
-		case 9:
+		default:
 			exit(1);
 		}
 		system("cls");
 	}*/
-	
-	// 계산기
-	// Input : 수식, 지금 진도로 한정하는경우 num1, operator, num2
-	// Output : 수식과 결과
-	int num1, num2, res = 0;
-	char op;
-	printf("Enter an operator.: ");
-	scanf_s("%c", &op);
-	printf("Enter an operands.: ");
-	scanf_s("%d %d", &num1, &num2);
-	switch (op) {
-	case '+':
-		res = num1 + num2;
-		break;
-	case '-':
-		res = num1 - num2;
-		break;
-	case '*':
-		res = num1 * num2;
-		break;
-	case '/':
-		res = num1 / num2;
-		break;
-	default:
-		printf("error");
-		exit(1);
-	}
-	printf("%d %c %d = %d\n", num1, op, num2, res);
-	
+
 }
