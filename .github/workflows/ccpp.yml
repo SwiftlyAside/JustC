@@ -12,9 +12,6 @@ jobs:
     runs-on: windows-latest
     
     steps:
-    - uses: actions/checkout@v2
-    - name: make
-      run: make
     - name: Test
-      run: ./Project
+      run: ./Day1/Debug/*.exe
       timeout-minutes: 1
