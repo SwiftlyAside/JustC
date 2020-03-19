@@ -21,16 +21,16 @@
  *                   평균 단가 = (시스템 코인 갯수 * 평균 단가 + 반입/반출 코인 갯수 * 현재가) / (시스템 코인 갯수 + 반입/반출 코인 갯수) [시스템 코인 갯수는 처리 전 갯수를 말함]
  *                   평가 금액 = 총액 * 평균단가 - 총액 * 현재가 
  *                   
- * 취급 데이터 유형:       사용자의 코인 잔량 (TODO: int로 변경)
+ * 취급 데이터 유형:       !사용자의 코인 잔량 (TODO: int로 변경)
  *                         사용자 데이터 (??)
- *                         평균 단가 (float)
- *                         평가 금액 (float)
- *                         최대 구매 가능 개수 (int)
- *                         !시스템 코인 잔량 (TODO: int로 변경) >> value의 영향을 받지 않음.
+ *                         !평균 단가 (float)
+ *                         !평가 금액 (float)
+ *                         TODO: 최대 구매 가능 개수 (int)
+ *                         !시스템 코인 잔량 >> value의 영향을 받지 않음. (TODO: int로 변경)
  *
- * 생명주기 특성 :         ESC를 누르기 전까지 종료하지 않음
- *                         사용자의 행동 이후 화면을 고침
- *                         (Very hard) 사용자의 행동이 없는 경우 '5'초마다 화면을 고침, 행동을 받는 경우 일시 중단 (비동기 처리 필요하면 구현안함)
+ * 생명주기 특성 :         TODO: ESC를 누르기 전까지 프로그램을 종료하지 않음
+ *                         !사용자의 행동 이후 화면을 고침
+ *                         (Very hard) 사용자의 행동이 없는 경우 '5'초마다 화면을 고침, 행동을 받는 경우 일시 중단
  *                     
  */
 
@@ -152,7 +152,8 @@ void lotto5() {
     char chosen[30] = "YOU HAVE BEEN CHOSEN!";
 }*/
 
-float owned_coin = 100000.00, system_coin = 0.00, average = 0.00;
+float owned_coin = 100000, system_coin = 0;
+float average = 0.00;
 
 int main(int argc, char* argv[]) {
     srand(time(NULL));
@@ -162,9 +163,10 @@ int main(int argc, char* argv[]) {
         const float current = (float)(rand() % 10000000) / 100.00;
         const float evaluated = system_coin * (current - average);
         printf("Value : %.2f\n\n", current);
+        printf("Average value: %.2f\n", average);
         printf("Evaluated Balance : %.2f\n", evaluated);
-        printf("Your Coin : %.2f\n", system_coin);
-        printf("Your Account Balance : %.2f\n\n", owned_coin);
+        printf("Your Coin : %.0f\n", system_coin);
+        printf("Your Account Balance : %.0f\n\n", owned_coin);
         printf("===============================\n");
         printf("1. Buy coin now!\n");
         printf("2. Sell coin now!\n");
@@ -178,7 +180,7 @@ int main(int argc, char* argv[]) {
             average = (system_coin * average + to_buy * current) / (system_coin + to_buy);
             owned_coin -= to_buy * current;
             system_coin += to_buy;
-            printf("You Bought : %.2f Coin.\nPress any key.\n", to_buy);
+            printf("You Bought : %.0f Coin.\nPress any key.\n", to_buy);
             _getch();
             break;
         case 2:
@@ -186,16 +188,16 @@ int main(int argc, char* argv[]) {
             printf("Amount to sell: ");
             scanf_s("%f", &to_sell);
             if (to_sell < system_coin && to_sell != 0) {
-                average = (float)((int)(system_coin * average - to_sell * current) / (int)(system_coin - to_sell));
+                average = (float)((system_coin * average - to_sell * current) / (int)(system_coin - to_sell));
                 owned_coin += to_sell * current;
                 system_coin -= to_sell;
-                printf("You Sold : %.2f Coin.\nPress any key.\n", to_sell);
+                printf("You Sold : %.0f Coin.\nPress any key.\n", to_sell);
             }
             else if (to_sell == system_coin && to_sell != 0) {
                 average = 0.00;
                 owned_coin += to_sell * current;
                 system_coin -= to_sell;
-                printf("You Sold : %.2f Coin.\nPress any key.\n", to_sell);
+                printf("You Sold : %.0f Coin.\nPress any key.\n", to_sell);
             }
             else printf("You entered Too much value or zero!\n");
             _getch();
