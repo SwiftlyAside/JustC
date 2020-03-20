@@ -2,21 +2,21 @@
 
 int main(int argc, char* argv[]) {
 	// 두 수의 최소 공배수, 최대 공약수
-	int num1, num2;
+	int num1, num2, gcd, temp1, temp2;
 	printf("두 숫자 입력.: ");
 	scanf_s("%d %d", &num1, &num2);
-	// 최대 공약수, 유클리드 호제법 사용
-	int a = num1, b = num2, c;
+	// 최대 공약수
+	gcd = num1, temp1 = num2;
 	if (num1 < num2) 
-		a = num2, b = num1;
-	while (b) {
-		c = a % b;
-		a = b;
-		b = c;
+		gcd = num2, temp1 = num1;
+	while (temp1) {
+		temp2 = gcd % temp1;
+		gcd = temp1;
+		temp1 = temp2;
 	}
-	printf("%d, %d의 최대 공약수: %d\n", num1, num2, a);
+	printf("%d, %d의 최대 공약수: %d\n", num1, num2, gcd);
 	// 최소 공배수
-	const int lcm = num1 * num2 / a;
+	const int lcm = num1 * num2 / gcd;
 	printf("%d, %d의 최소 공배수: %d\n", num1, num2, lcm);
 	
 	// 1 ~ n 사이의 모든 약수를 출력할 것
@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
 		for (j = 2; j <= i; j++) {
 			if (i % j == 0) break;
 		}
-		if (i <= j)
+		if (i == j)
 			printf("%d ", i);
 	}
 
